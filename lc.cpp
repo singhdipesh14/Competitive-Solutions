@@ -3,42 +3,41 @@ using namespace std;
 
 class Solution {
 public:
-    
-    bool check(string haystack, string needle, int start){
-        //cout << "we checked" << endl;
-        for(int i =0; i<needle.size();i++){
-            if(haystack[start++]!=needle[i]){
-                return false;
+    int searchInsert(vector<int>& nums, int target) {
+        int high = nums.size()-1, low = 0, mid, ans = -1;
+        if(target>nums[nums.size()-1]){
+            return nums.size();
+        }
+        while(low<high){
+            mid = (low + high) / 2;
+            if(nums[mid]==target){
+                ans = mid;
+                break;
+            }
+            else if(nums[mid]>target){
+                high = high - 1;
+            }
+            else{
+                low = low + 1;
             }
         }
-        return true;
-    }
-    
-    int strStr(string haystack, string needle) {
-        bool ans = false;
-        int pos;
-        for(int i=0; i<haystack.size();i++){
-            if(haystack[i]==needle[0]){
-                if(check(haystack, needle, i)){
-                    ans = true;
-                    pos = i;
-                    break;
-                }
-            }
+        if(ans == -1){
+            return high;
         }
-        if(ans){
-            return pos;
-        }
-        return -1;
+        return ans;
     }
 };
 
 int main()
 {
-    string s = "hello";
-    string y = "ll";
+    vector<int> a;
+    a.push_back(1);
+    a.push_back(3);
+    a.push_back(5);
+    a.push_back(6);
+    int target = 8;
     Solution sol;
-    int ans = sol.strStr(s, y);
+    int ans = sol.searchInsert(a, target);
     cout << ans << endl;
     return 0;
 }
