@@ -3,41 +3,39 @@ using namespace std;
 
 class Solution {
 public:
-    int searchInsert(vector<int>& nums, int target) {
-        int high = nums.size()-1, low = 0, mid, ans = -1;
-        if(target>nums[nums.size()-1]){
-            return nums.size();
-        }
-        while(low<high){
-            mid = (low + high) / 2;
-            if(nums[mid]==target){
-                ans = mid;
-                break;
-            }
-            else if(nums[mid]>target){
-                high = high - 1;
+    
+    string rec(string n){
+        int cnt = 0;
+        string val = "";
+        char c = n[0];
+        for(int i = 0; i< n.size(); i++){
+            if(c == n[i]){
+                cnt++;
             }
             else{
-                low = low + 1;
+                val+=(char)(cnt+'0');
+                val+=c;
+                cnt = 0;
+                c = n[i];
+                i--;
             }
         }
-        if(ans == -1){
-            return high;
+        return val;
+    }
+    
+    string countAndSay(int n) {
+        string base = "1"
+        for(int i = 1; i<=n; i++){
+            base = rec(base);
         }
-        return ans;
+        return base;
     }
 };
 
 int main()
 {
-    vector<int> a;
-    a.push_back(1);
-    a.push_back(3);
-    a.push_back(5);
-    a.push_back(6);
-    int target = 8;
     Solution sol;
-    int ans = sol.searchInsert(a, target);
+    string ans = sol.countAndSay(4);
     cout << ans << endl;
     return 0;
 }
