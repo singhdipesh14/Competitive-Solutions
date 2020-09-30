@@ -101,7 +101,23 @@ using namespace std;
 
 void func()
 {
-
+    int n, x;
+    cin >> n >> x;
+    if(n<3){
+        cout << 1 << endl;
+        return;
+    }
+    int cnt = 2;
+    n = n-2;
+    for(int i = 1; i<=n; i++){
+        if(i == n){
+            cout << cnt << endl;
+            break;
+        }
+        if(i%x==0){
+            cnt++;
+        }
+    }
 }
 
 int main()
@@ -109,7 +125,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
      int num = 1;
-     //cin >> num;
+     cin >> num;
      //cin.ignore(numeric_limits<streamsize>::max(), '\n');
      while (num--)
     {
