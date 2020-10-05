@@ -101,27 +101,9 @@ using namespace std;
 
 void func()
 {
-    cout << "try karke dekhte hai part 3 ";
-    ll n;
-    cin >> n;
-    vector<ll> a, b;
-    for(int i=0;i<n;i++){
-        ll x; cin >> x;
-        a.pb(x);
-    }
-    for(int i=0; i<n; i++){
-        ll x; cin >> x;
-        b.pb(x);
-    }
-    ll minA = *min_element(a.begin(), a.end());
-    ll minB = *min_element(b.begin(), b.end());
-    ll res = 0;
-    for(int i=0; i<n; i++){
-        res += max(a[i]-minA, b[i]-minB);
-    }
-    cout << res << endl;
+    
 }
-int x;
+
 int main()
 {
     #ifndef ONLINE_JUDGE 
@@ -132,8 +114,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
      int num = 1;
-     cin >> num;
-     int x;
+     //cin >> num;
      //cin.ignore(numeric_limits<streamsize>::max(), '\n');
      while (num--)
     {
@@ -142,12 +123,3 @@ int main()
     cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
     return 0;
 }
-
-
-template <Type T>;
-T method(T a, T b){
-    return a+b;
-}
-
-string s = "Hello", b = " World";
-string ans = method(s, b);
